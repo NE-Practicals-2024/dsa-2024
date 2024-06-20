@@ -1,9 +1,11 @@
-#include "data.cpp"
 #include <fstream>
 #include <sstream>
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "data.cpp"
+
+// Splitter function
 vector<string> split(const string &str, char delimiter)
 {
     vector<string> tokens;
@@ -16,6 +18,7 @@ vector<string> split(const string &str, char delimiter)
     return tokens;
 };
 
+// Further date validation
 bool isLeapYear(int year)
 {
     if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
@@ -25,6 +28,7 @@ bool isLeapYear(int year)
     return false;
 }
 
+// Date validation function
 bool validateDate(const string &date)
 {
     vector<string> parts = split(date, '/');
@@ -60,6 +64,7 @@ bool validateDate(const string &date)
     return true;
 }
 
+// Patient constraint validation
 bool validatePatientRegistration(int id, string &dob, Patient *patientsHead)
 {
     // Date validator
@@ -80,9 +85,9 @@ bool validatePatientRegistration(int id, string &dob, Patient *patientsHead)
     return true;
 }
 
+// Doctor constraint validation
 bool validateDoctorRegistration(int id, Doctor *doctorsHead)
 {
-    // Loop through the linked list starting from *doctorsHead to check if id is not duplicated
     // Loop through the linked list starting from *doctorsHead to check if id is not duplicated
     while (doctorsHead != NULL)
     {
@@ -96,6 +101,7 @@ bool validateDoctorRegistration(int id, Doctor *doctorsHead)
     return true;
 }
 
+// Appointment constraint validation
 bool validateAppointmentRegistration(int id, int patientId, int doctorId, string &date, Patient *patientsHead, Doctor *doctorsHead, Appointment *appointmentsHead)
 {
     if (!validateDate(date))

@@ -14,7 +14,7 @@ struct Patient
     string dob;
     string gender;
 
-    struct Patient *next;
+    struct Patient *next; // Pointer to the next patient
 };
 
 // Linked List to store doctors and reference to the next one in the linked list
@@ -24,7 +24,7 @@ struct Doctor
     string name;
     string specialization;
 
-    struct Doctor *next;
+    struct Doctor *next; // Pointer to the next doctor
 };
 
 // Linked List to store appointments and reference to the next one in the linked list
@@ -35,5 +35,5 @@ struct Appointment
     int doctor_id;
     string appointment_date;
 
-    struct Appointment *next;
+    struct Appointment *next; // Pointer to the next appointment
 };

@@ -4,7 +4,7 @@
 #include <vector>
 #include <stdio.h>
 #include <stdlib.h>
-# include <colordlg.h>
+#include <colordlg.h>
 
 using namespace std;
 
@@ -24,7 +24,7 @@ int main()
 {
 
     cout << "=============================================================" << endl;
-    cout << "**********= WELCOME TO OUR HEALTH CARE SYSTEM🥳🥳  =********" << endl;
+    cout << "**********=   WELCOME TO OUR HEALTH CARE SYSTEM     =********" << endl;
     cout << "**********=      RUHENGERI REFFERAL HOSPITAL        =********" << endl;
     cout << "**********=   Developed by Precieux Mugisha - RCA   =********" << endl;
     cout << "=============================================================" << endl;
@@ -33,10 +33,9 @@ int main()
     struct Doctor *doctorsHead = NULL;
     struct Appointment *appointmentsHead = NULL;
     std::string choice;
-    printHelp();
     while (true)
     {
-    startProgram:
+        printHelp();
         std::cout << "Enter your choice: ";
         std::getline(std::cin, choice);
 
@@ -65,6 +64,7 @@ int main()
             }
             addPatient(&patientsHead, id, name, dob, gender);
             cout << "Patient registered successfully" << endl;
+            cin.ignore();
         }
         else if (choice == "2")
         {
@@ -88,6 +88,7 @@ int main()
             }
             addDoctor(&doctorsHead, id, name, specialization);
             cout << "Doctor registered successfully" << endl;
+            cin.ignore();
         }
 
         else if (choice == "3")
@@ -115,6 +116,7 @@ int main()
             }
             addAppointment(&appointmentsHead, id, doctorId, patientId, appointmentDate);
             cout << "Appointment registered successfully" << endl;
+            cin.ignore();
         }
         else if (choice == "4")
         {

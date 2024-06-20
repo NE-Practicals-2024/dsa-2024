@@ -62,9 +62,20 @@ bool validateDate(const string &date)
 
 bool validatePatientRegistration(int id, string &dob, Patient *patientsHead)
 {
+    // Date validator
     if (!validateDate(dob))
     {
         return false;
+    }
+    // Loop through the linked list starting from *patientsHead to check if id is not duplicated
+    while (patientsHead != NULL)
+    {
+        if (patientsHead->patient_id == id)
+        {
+            cout << "Patient with that id already exists" << endl;
+            return false;
+        }
+        patientsHead = patientsHead->next;
     }
     return true;
 }
@@ -72,17 +83,62 @@ bool validatePatientRegistration(int id, string &dob, Patient *patientsHead)
 bool validateDoctorRegistration(int id, Doctor *doctorsHead)
 {
     // Loop through the linked list starting from *doctorsHead to check if id is not duplicated
-
+    // Loop through the linked list starting from *doctorsHead to check if id is not duplicated
+    while (doctorsHead != NULL)
+    {
+        if (doctorsHead->doctor_id == id)
+        {
+            cout << "Doctor with that id already exists" << endl;
+            return false;
+        }
+        doctorsHead = doctorsHead->next;
+    }
     return true;
 }
 
-bool validateAppointmentRegistration(int patientId, int doctorId, string &date, Patient *patientsHead, Doctor *doctorsHead)
+bool validateAppointmentRegistration(int id, int patientId, int doctorId, string &date, Patient *patientsHead, Doctor *doctorsHead, Appointment *appointmentsHead)
 {
     if (!validateDate(date))
     {
         return false;
     }
-    // Loop through the link
+
+    // Loop through the linked list starting from *patientsHead to check if id is not duplicated
+    while (appointmentsHead != NULL)
+    {
+        if (appointmentsHead->appointment_id == id)
+        {
+            cout << "Appointment with that id already exists" << endl;
+            return false;
+        }
+        appointmentsHead = appointmentsHead->next;
+    }
+
+    // Loop through the patients to check if the patient exists and if not return false
+    while (patientsHead != NULL)
+    {
+        if (patientsHead->patient_id == patientId)
+        {
+            break;
+        }
+        patientsHead = patientsHead->next;
+    }
+    if (patientsHead == NULL)
+    {
+        cout << "Patient with that id does not exist" << endl;
+        return false;
+    }
+
+    // Validate if doctor exists and if not return false
+    while (doctorsHead != NULL)
+    {
+        if (doctorsHead->doctor_id == doctorId)
+        {
+            break;
+        }
+        doctorsHead = doctorsHead->next;
+    }
+
     return true;
 }
 

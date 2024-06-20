@@ -24,7 +24,6 @@ int main()
     struct Patient *patientsHead = NULL;
     struct Doctor *doctorsHead = NULL;
     struct Appointment *appointmentsHead = NULL;
-
     std::string choice;
     printHelp();
     while (true)
@@ -100,8 +99,8 @@ int main()
             cout << "D_ID: ";
             cin >> doctorId;
             cout << "DATE: ";
-            getline(cin, appointmentDate);
-            if (!validateAppointmentRegistration(patientId, doctorId, appointmentDate, patientsHead, doctorsHead))
+            cin >> appointmentDate;
+            if (!validateAppointmentRegistration(id, patientId, doctorId, appointmentDate, patientsHead, doctorsHead, appointmentsHead))
             {
                 cout << "Re-enter your appointment data" << endl;
                 goto startAppointmentRegistration;

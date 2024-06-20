@@ -47,6 +47,7 @@ int main()
         switch (choice)
         {
         case 1:
+        {
         startPatientRegistration:
 
             int id;
@@ -79,7 +80,9 @@ int main()
             cout << "Patient registered successfully" << endl;
             cin.ignore();
             break;
+        }
         case 2:
+        {
         startDoctorRegistration:
 
             int id;
@@ -109,7 +112,9 @@ int main()
             cout << "Doctor registered successfully" << endl;
             cin.ignore();
             break;
+        }
         case 3:
+        {
         startAppointmentRegistration:
 
             int id;
@@ -141,6 +146,7 @@ int main()
             cout << "Appointment registered successfully" << endl;
             cin.ignore();
             break;
+        }
         case 4:
             displayPatients(patientsHead);
             break;
@@ -157,3 +163,4 @@ int main()
 
         return 0;
     }
+}

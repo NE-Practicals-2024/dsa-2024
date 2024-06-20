@@ -30,7 +30,7 @@ bool validateDate(const string &date)
     vector<string> parts = split(date, '/');
     if (parts.size() != 3)
     {
-        cout << "Date format should be dd/mm/yyyy";
+        cout << "Date format should be dd/mm/yyyy" << endl;
         return false;
     }
 
@@ -40,12 +40,12 @@ bool validateDate(const string &date)
 
     if (month < 1 || month > 12)
     {
-        cout << "Invalid months passed";
+        cout << "Invalid months passed" << endl;
         return false;
     }
     if (year < 1)
     {
-        cout << "Invalid years passed";
+        cout << "Invalid years passed" << endl;
         return false;
     }
 
@@ -53,7 +53,7 @@ bool validateDate(const string &date)
 
     if (day < 1 || day > daysInMonth[month - 1])
     {
-        cout << "Invalid days passed";
+        cout << "Invalid days passed" << endl;
         return false;
     }
 
@@ -138,20 +138,22 @@ bool validateAppointmentRegistration(int id, int patientId, int doctorId, string
         }
         doctorsHead = doctorsHead->next;
     }
+    if (doctorsHead == NULL)
+    {
+        cout << "Doctor with that id does not exist" << endl;
+        return false;
+    }
 
     return true;
 }
 
-//=================================================================
-/*
-    Functions to display the different nodess
- */
-// This function iterates through the patients linked list and displays the patients one by one
+/* ============================================================== */
+// Functions to display nodes in the linked list
 void displayPatients(struct Patient *head)
 {
     struct Patient *temp = head;
 
-    // iterate the entire linked list and print the data
+    // Iterate the entire linked list and print the data
     while (temp != NULL)
     {
         cout << "Patient ID: " << head->patient_id
@@ -164,12 +166,11 @@ void displayPatients(struct Patient *head)
     }
 }
 
-// This function iterates through the doctors linked list and displays the doctors one by one
 void displayDoctors(struct Doctor *head)
 {
     struct Doctor *temp = head;
 
-    // iterate the entire linked list and print the data
+    // Iterate the entire linked list and print the data
     while (temp != NULL)
     {
         cout << "Doctor ID: " << head->doctor_id
@@ -185,7 +186,7 @@ void displayAppointments(struct Appointment *head)
 {
     struct Appointment *temp = head;
 
-    // iterate the entire linked list and print the data
+    // Iterate the entire linked list and print the data
     while (temp != NULL)
     {
         cout << "Appointment ID: " << head->appointment_id
@@ -198,13 +199,10 @@ void displayAppointments(struct Appointment *head)
     }
 }
 
-// ==============================================================
-/*
-    Functions to add nodes to others in the linked list
-*/
+/* ============================================================== */
+// Functions to add nodes to others in the linked list
 void addPatient(Patient **head, int id, string name, string dob, string gender)
 {
-    // create a new node
     struct Patient *newNode = new Patient();
     newNode->patient_id = id;
     newNode->name = name;
@@ -216,7 +214,6 @@ void addPatient(Patient **head, int id, string name, string dob, string gender)
 
 void addDoctor(Doctor **head, int id, string name, string specialization)
 {
-    // create a new node
     struct Doctor *newNode = new Doctor();
     newNode->doctor_id = id;
     newNode->name = name;
@@ -227,7 +224,6 @@ void addDoctor(Doctor **head, int id, string name, string specialization)
 
 void addAppointment(Appointment **head, int id, int doctor_id, int patient_id, string appointment_date)
 {
-    // create a new node
     struct Appointment *newNode = new Appointment();
     newNode->appointment_id = id;
     newNode->doctor_id = doctor_id;

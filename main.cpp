@@ -4,6 +4,7 @@
 #include <vector>
 #include <stdio.h>
 #include <stdlib.h>
+# include <colordlg.h>
 
 using namespace std;
 
@@ -21,6 +22,13 @@ void printHelp()
 
 int main()
 {
+
+    cout << "=============================================================" << endl;
+    cout << "**********= WELCOME TO OUR HEALTH CARE SYSTEM🥳🥳  =********" << endl;
+    cout << "**********=      RUHENGERI REFFERAL HOSPITAL        =********" << endl;
+    cout << "**********=   Developed by Precieux Mugisha - RCA   =********" << endl;
+    cout << "=============================================================" << endl;
+
     struct Patient *patientsHead = NULL;
     struct Doctor *doctorsHead = NULL;
     struct Appointment *appointmentsHead = NULL;

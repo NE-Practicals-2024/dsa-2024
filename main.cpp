@@ -65,7 +65,6 @@ int main()
             int id;
             string name;
             string specialization;
-            string gender;
             cout << "DOCTOR REGISTRATION" << endl;
             cout << "___________________________" << endl;
             cout << "ID: ";
@@ -74,7 +73,7 @@ int main()
             cout << "NAME: ";
             getline(cin, name);
             cout << "SPECIALIZATION: ";
-            cin >> gender;
+            cin >> specialization;
             if (!validateDoctorRegistration(id, doctorsHead))
             {
                 cout << "Re-enter your doctor info" << endl;
@@ -100,14 +99,14 @@ int main()
             cin >> patientId;
             cout << "D_ID: ";
             cin >> doctorId;
-            cout << "D_ID: ";
+            cout << "DATE: ";
             getline(cin, appointmentDate);
             if (!validateAppointmentRegistration(patientId, doctorId, appointmentDate, patientsHead, doctorsHead))
             {
                 cout << "Re-enter your appointment data" << endl;
                 goto startAppointmentRegistration;
             }
-            addAppointment(appointmentsHead, id, doctorId, patientId, appointmentDate);
+            addAppointment(&appointmentsHead, id, doctorId, patientId, appointmentDate);
             cout << "Appointment registered successfully" << endl;
         }
         else if (choice == "4")
@@ -120,7 +119,7 @@ int main()
         }
         else if (choice == "6")
         {
-            displayAppointments(appointmentsHead)
+            displayAppointments(appointmentsHead);
         }
         else if (choice == "7")
         {

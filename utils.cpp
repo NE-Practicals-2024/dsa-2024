@@ -135,6 +135,7 @@ void displayAppointments(struct Appointment *head)
         cout << "Appointment ID: " << head->appointment_id
              << ", P_ID: " << head->patient_id
              << ", D_ID: " << head->doctor_id
+             << ", DATE: " << head->appointment_date
              << endl;
         head = head->next;
         temp = temp->next;
@@ -153,25 +154,8 @@ void addPatient(Patient **head, int id, string name, string dob, string gender)
     newNode->name = name;
     newNode->dob = dob;
     newNode->gender = gender;
-    newNode->next = NULL;
-
-    // if head is NULL, it is an empty list
-    if (*head == NULL)
-        *head = newNode;
-    // Otherwise, find the last Patient and add the newNode
-    else
-    {
-        struct Patient *lastNode = *head;
-
-        // last Patient's next address will be NULL.
-        while (lastNode->next != NULL)
-        {
-            lastNode = lastNode->next;
-        }
-
-        // add the newNode at the end of the linked list
-        lastNode->next = newNode;
-    }
+    newNode->next = (*head);
+    (*head) = newNode;
 }
 
 void addDoctor(Doctor **head, int id, string name, string specialization)
@@ -181,25 +165,8 @@ void addDoctor(Doctor **head, int id, string name, string specialization)
     newNode->doctor_id = id;
     newNode->name = name;
     newNode->specialization = specialization;
-    newNode->next = NULL;
-
-    // if head is NULL, it is an empty list
-    if (*head == NULL)
-        *head = newNode;
-    // Otherwise, find the last Doctor and add the newNode
-    else
-    {
-        struct Doctor *lastNode = *head;
-
-        // last Doctor's next address will be NULL.
-        while (lastNode->next != NULL)
-        {
-            lastNode = lastNode->next;
-        }
-
-        // add the newNode at the end of the linked list
-        lastNode->next = newNode;
-    }
+    newNode->next = (*head);
+    (*head) = newNode;
 }
 
 void addAppointment(Appointment **head, int id, int doctor_id, int patient_id, string appointment_date)
@@ -210,23 +177,6 @@ void addAppointment(Appointment **head, int id, int doctor_id, int patient_id, s
     newNode->doctor_id = doctor_id;
     newNode->appointment_date = appointment_date;
     newNode->patient_id = patient_id;
-    newNode->next = NULL;
-
-    // if head is NULL, it is an empty list
-    if (*head == NULL)
-        *head = newNode;
-    // Otherwise, find the last Appointment and add the newNode
-    else
-    {
-        struct Appointment *lastNode = *head;
-
-        // last Appointment's next address will be NULL.
-        while (lastNode->next != NULL)
-        {
-            lastNode = lastNode->next;
-        }
-
-        // add the newNode at the end of the linked list
-        lastNode->next = newNode;
-    }
+    newNode->next = (*head);
+    (*head) = newNode;
 }

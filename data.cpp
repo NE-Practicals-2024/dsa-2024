@@ -35,5 +35,5 @@ struct Appointment
     int doctor_id;
     string appointment_date;
 
-    struct mAppointment *next;
+    struct Appointment *next;
 };

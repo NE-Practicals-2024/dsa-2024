@@ -70,11 +70,12 @@ int main()
             if (!validatePatientRegistration(id, dob, patientsHead))
             {
                 cout << "Re-enter your patient info" << endl;
+                cout << "==============================" << endl;
                 goto startPatientRegistration;
             }
 
             addPatient(&patientsHead, id, name, dob, gender);
-            
+
             cout << "==============================" << endl;
             cout << "Patient registered successfully" << endl;
             cin.ignore();
@@ -100,6 +101,7 @@ int main()
             if (!validateDoctorRegistration(id, doctorsHead))
             {
                 cout << "Re-enter your doctor info" << endl;
+                cout << "==============================" << endl;
                 goto startDoctorRegistration;
             }
 

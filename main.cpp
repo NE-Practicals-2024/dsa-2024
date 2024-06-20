@@ -3,8 +3,6 @@
 #include <vector>
 #include <stdio.h>
 #include <stdlib.h>
-#include <colordlg.h>
-
 #include "utils.cpp"
 
 using namespace std;
@@ -37,17 +35,18 @@ int main()
     struct Doctor *doctorsHead = NULL;
     struct Appointment *appointmentsHead = NULL;
 
-    string choice;
+    int choice;
 
     // Run program until exit(7) is input
     while (true)
     {
         printHelp();
         cout << "Enter your choice: ";
-        getline(cin, choice);
+        cin >> choice;
 
-        if (choice == "1")
+        switch (choice)
         {
+        case 1:
         startPatientRegistration:
 
             int id;
@@ -79,9 +78,8 @@ int main()
             cout << "==============================" << endl;
             cout << "Patient registered successfully" << endl;
             cin.ignore();
-        }
-        else if (choice == "2")
-        {
+            break;
+        case 2:
         startDoctorRegistration:
 
             int id;
@@ -110,10 +108,8 @@ int main()
             cout << "==============================" << endl;
             cout << "Doctor registered successfully" << endl;
             cin.ignore();
-        }
-
-        else if (choice == "3")
-        {
+            break;
+        case 3:
         startAppointmentRegistration:
 
             int id;
@@ -144,28 +140,20 @@ int main()
 
             cout << "Appointment registered successfully" << endl;
             cin.ignore();
-        }
-        else if (choice == "4")
-        {
+            break;
+        case 4:
             displayPatients(patientsHead);
-        }
-        else if (choice == "5")
-        {
+            break;
+        case 5:
             displayDoctors(doctorsHead);
-        }
-        else if (choice == "6")
-        {
+            break;
+        case 6:
             displayAppointments(appointmentsHead);
-        }
-        else if (choice == "7")
-        {
+            break;
+        default:
+            cout << "Invalid choice.\n";
             break;
         }
-        else
-        {
-            cout << "Invalid choice.\n";
-        }
-    }
 
-    return 0;
-}
+        return 0;
+    }
